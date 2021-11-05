@@ -24,7 +24,7 @@ var start = async function(a, b) {
     }
   }
 
-  var task = node_cron.schedule('* 8 * * *', () => {
+  var task = node_cron.schedule('* * * * *', () => {
     console.log('Running a task every');
     start();
   });
