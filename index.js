@@ -13,8 +13,9 @@ var start = async function(a, b) {
     var text = $("table").first().css("background-color","#FFFFDD").find("center > font > a").attr('href');
     var text =link+text;
     var data = {
-        "puzzle_url" : text
-    }
+        "puzzle_url" : text,
+        "difficulty": new Date().getDay()
+    }    
     try {
         let p1 = new puzzle(data);
         let response = await p1.save();
@@ -24,10 +25,12 @@ var start = async function(a, b) {
     }
   }
 
-  var task = node_cron.schedule('* 8 * * *', () => {
-    console.log('Running a task every');
-    start();
-  });
-  task.start();
+//   var task = node_cron.schedule('* 8 * * *', () => {
+//     console.log('Running a task every');
+//     start();
+//   });
+//   task.start();
+
+start()
 
 
